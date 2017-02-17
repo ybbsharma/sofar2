@@ -1,4 +1,4 @@
 library(testthat)
-library(sofars)
+library(sofars2)
 
-test_check("sofars")
+test_check("sofars2")

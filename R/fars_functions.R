@@ -44,28 +44,28 @@ make_filename <- function(year) {
   sprintf("accident_%d.csv.bz2", year)
 }
 
-#'Extract Months and years of the FARS files
+#' Extract Months and years of the FARS files
 #'
-#'This function take year or list of years as aurgument and returns list of yearwise months and years from the FARS
-#'file for the inputted years.
+#' This function take year or list of years as aurgument and returns list of yearwise months and years from the FARS
+#' file for the inputted years.
 #'
-#'@param years a character string or numeric or a list of character stings/ numeric specifying year/ years
+#' @param years a character string or numeric or a list of character stings/ numeric specifying year/ years
 #'
-#'@return a list of months and years from the FARS files for the inputted \code{years}.
+#' @return a list of months and years from the FARS files for the inputted \code{years}.
 #'
-#'@note The function throws a warning of invalid year if the file with year in the name is not found. Also
+#' @note The function throws a warning of invalid year if the file with year in the name is not found. Also
 #'  must be in the current working directory
 #'
 #'
 #'@examples
-#'fars_read_years("2013")
-#'fars_read_years(2013)
-#'fars_read_years(c(2012, 2013, 2014, 2015))
-#'fars_read_years(c("2012", "2013", "2014", "2015"))
+#' fars_read_years("2013")
+#' fars_read_years(2013)
+#' fars_read_years(c(2012, 2013, 2014, 2015))
+#' fars_read_years(c("2012", "2013", "2014", "2015"))
 #'
-#'@import dplyr
+#' @import dplyr
 #'
-#'@export
+#' @export
 fars_read_years <- function(years) {
   lapply(years, function(year) {
     file <- make_filename(year)
@@ -82,7 +82,7 @@ fars_read_years <- function(years) {
 
 #' Monthwise and yearwise summary of FARS data
 #'
-#'This function provide the summary of count for each month of an year for the years passed as argument.
+#' This function provide the summary of count for each month of an year for the years passed as argument.
 #'
 #' @inheritParams fars_read_years
 #'
@@ -92,15 +92,14 @@ fars_read_years <- function(years) {
 #'  must be in the current working directory
 #'
 #'
-#'@examples
-#'fars_read_years("2013")
-#'fars_read_years(2013)
-#'fars_read_years(c(2012, 2013, 2014, 2015))
-#'fars_read_years(c("2012", "2013", "2014", "2015"))
+#' @examples
+#' fars_summarize_years("2013")
+#' fars_summarize_years(2013)
+#' fars_summarize_years(c(2012, 2013, 2014, 2015))
+#' fars_summarize_years(c("2012", "2013", "2014", "2015"))
 #'
-#'@import dplyr
-#'@export
-
+#' @import dplyr
+#' @export
 fars_summarize_years <- function(years) {
   dat_list <- fars_read_years(years)
   dplyr::bind_rows(dat_list) %>%
@@ -125,12 +124,12 @@ fars_summarize_years <- function(years) {
 #' @note The function replace the Longitude data with NA where the Logitude value is > 900
 #' the function replace the Latitude data with NA where the Latitute value is > 90
 #'
-#'@examples
-#'fars_map_state(1, 2013)
+#' @examples
+#' fars_map_state(1, 2013)
 #'
-#'@import dplyr
-#'@import maps
-#'@export
+#' @import dplyr
+#' @import maps
+#' @export
 fars_map_state <- function(state.num, year) {
   filename <- make_filename(year)
   data <- fars_read(filename)
