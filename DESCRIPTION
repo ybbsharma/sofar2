@@ -16,4 +16,5 @@ VignetteBuilder: knitr
 Imports:
   dplyr (>= 0.4.0),
   readr (>= 1.0.0),
-  tidyr
+  tidyr,
+  maps
