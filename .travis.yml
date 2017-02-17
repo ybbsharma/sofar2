@@ -5,6 +5,8 @@ sudo: false
 cache: packages
 
 before_install:
+<<<<<<< HEAD
   - sudo apt-get -qq update
   - sudo apt-get install -y libxml2-dev
+
 
