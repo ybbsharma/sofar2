@@ -12,9 +12,14 @@ make_filename(year)
 \value{
 the function prints the static filename appended with year name passed as argument. The functions throws
 an error when a non character or non numeric value is passed as an argument.
+}
+\description{
+This function appends the year to the filename. The function take the year as an argument to append to standard file
+name "accident_\code{year}.csv"
+}
+\examples{
+\dontrun{make_filename(1976)}
+\dontrun{make_filename("1976")}
+\dontrun{make_filename(76)}
 
-#@examples
-#make_filename(1976)
-#make_filename("1976")
-#make_filename(76)
 }

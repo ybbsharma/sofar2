@@ -13,16 +13,17 @@ fars_summarize_years(years)
 a table summarizing the FARS data monthwise for the each inputted year.
 }
 \description{
-This function provide the summary of count for each month of an year for the years passed as argument.
+This function provide the summary of count for each month of an year for the years passed as
+argument.
 }
 \note{
 The function throws a warning of invalid year if the file with year in the name is not found. Also
  must be in the current working directory
+}
+\examples{
+\dontrun{fars_summarize_years("2013")}
+\dontrun{fars_summarize_years(2013)}
+\dontrun{fars_summarize_years(c(2012, 2013, 2014, 2015))}
+\dontrun{fars_summarize_years(c("2012", "2013", "2014", "2015"))}
 
-
-#@examples
-#fars_summarize_years("2013")
-#fars_summarize_years(2013)
-#fars_summarize_years(c(2012, 2013, 2014, 2015))
-#fars_summarize_years(c("2012", "2013", "2014", "2015"))
 }

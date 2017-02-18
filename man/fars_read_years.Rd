@@ -19,11 +19,11 @@ file for the inputted years.
 \note{
 The function throws a warning of invalid year if the file with year in the name is not found. Also
  must be in the current working directory
+}
+\examples{
+\dontrun{fars_read_years("2013")}
+\dontrun{fars_read_years(2013)}
+\dontrun{fars_read_years(c(2012, 2013, 2014, 2015))}
+\dontrun{fars_read_years(c("2012", "2013", "2014", "2015"))}
 
-
-#@examples
-#fars_read_years("2013")
-#fars_read_years(2013)
-#fars_read_years(c(2012, 2013, 2014, 2015))
-#fars_read_years(c("2012", "2013", "2014", "2015"))
 }

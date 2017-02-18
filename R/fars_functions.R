@@ -1,18 +1,20 @@
 #' Reads a file data and convert to a dateframe table.
 #'
-#' This function will create a dataframe table by reading the file data. The functions take file name or file path as input
+#' @description
+#' This function will create a dataframe table by reading the file data. The functions take file name
+#' or file path as input
 #'
 #' @param filename A character string providing the file name or file path for which the dataframe table will be created
 #'
 #' @return This function returns the dataframe table for the data of \code{filename} which is passed as the argument.
 #'  If the file do not exist then the function prints a error  {"file \code{filename} does not exist} message.
 #'
-#' #@examples
-#' #fars_read("xyz.csv")
-#' #fars_read("data/xyz.csv")
+#' @examples
+#' \dontrun{fars_read("accident_2015.csv.bz2")}
+#'
 #'
 #' @import dplyr
-#'
+#' @import readr
 #' @export
 fars_read <- function(filename) {
   if(!file.exists(filename))
@@ -23,20 +25,23 @@ fars_read <- function(filename) {
   dplyr::tbl_df(data)
 }
 
+
+
 #' Names file with year
 #'
+#' @description
 #' This function appends the year to the filename. The function take the year as an argument to append to standard file
-#' name "accident_\code{%d}.csv"
+#' name "accident_\code{year}.csv"
 #'
 #' @param year A character string or numeric as year
 #'
 #' @return the function prints the static filename appended with year name passed as argument. The functions throws
 #' an error when a non character or non numeric value is passed as an argument.
 #'
-#' #@examples
-#' #make_filename(1976)
-#' #make_filename("1976")
-#' #make_filename(76)
+#' @examples
+#' \dontrun{make_filename(1976)}
+#' \dontrun{make_filename("1976")}
+#' \dontrun{make_filename(76)}
 #'
 #' @export
 make_filename <- function(year) {
@@ -44,8 +49,11 @@ make_filename <- function(year) {
   sprintf("accident_%d.csv.bz2", year)
 }
 
+
+
 #' Extract Months and years of the FARS files
 #'
+#' @description
 #' This function take year or list of years as aurgument and returns list of yearwise months and years from the FARS
 #' file for the inputted years.
 #'
@@ -56,12 +64,11 @@ make_filename <- function(year) {
 #' @note The function throws a warning of invalid year if the file with year in the name is not found. Also
 #'  must be in the current working directory
 #'
-#'
-#'#@examples
-#' #fars_read_years("2013")
-#' #fars_read_years(2013)
-#' #fars_read_years(c(2012, 2013, 2014, 2015))
-#' #fars_read_years(c("2012", "2013", "2014", "2015"))
+#' @examples
+#' \dontrun{fars_read_years("2013")}
+#' \dontrun{fars_read_years(2013)}
+#' \dontrun{fars_read_years(c(2012, 2013, 2014, 2015))}
+#' \dontrun{fars_read_years(c("2012", "2013", "2014", "2015"))}
 #'
 #' @import dplyr
 #'
@@ -80,9 +87,12 @@ fars_read_years <- function(years) {
   })
 }
 
+
 #' Monthwise and yearwise summary of FARS data
 #'
-#' This function provide the summary of count for each month of an year for the years passed as argument.
+#' @description
+#' This function provide the summary of count for each month of an year for the years passed as
+#' argument.
 #'
 #' @inheritParams fars_read_years
 #'
@@ -92,13 +102,14 @@ fars_read_years <- function(years) {
 #'  must be in the current working directory
 #'
 #'
-#' #@examples
-#' #fars_summarize_years("2013")
-#' #fars_summarize_years(2013)
-#' #fars_summarize_years(c(2012, 2013, 2014, 2015))
-#' #fars_summarize_years(c("2012", "2013", "2014", "2015"))
+#' @examples
+#' \dontrun{fars_summarize_years("2013")}
+#' \dontrun{fars_summarize_years(2013)}
+#' \dontrun{fars_summarize_years(c(2012, 2013, 2014, 2015))}
+#' \dontrun{fars_summarize_years(c("2012", "2013", "2014", "2015"))}
 #'
 #' @import dplyr
+#' @import tidyr
 #' @export
 fars_summarize_years <- function(years) {
   dat_list <- fars_read_years(years)
@@ -111,9 +122,9 @@ fars_summarize_years <- function(years) {
 
 #' Plots map of the state with accident data for a specified year
 #'
-#' \code{fars_map_state} returns a FARS report for the state number and year passed as an argument
+#' @description
+#' This function returns a FARS report for the state number and year passed as an argument
 #'
-#' @inheritParams fars_read_years
 #' @param state.num a numeric value
 #' @param year a character string or numeric
 #'
@@ -125,10 +136,12 @@ fars_summarize_years <- function(years) {
 #' @note The function replace the Longitude data with NA where the Logitude value is > 900
 #' the function replace the Latitude data with NA where the Latitute value is > 90
 #'
-#'
+#' @example
+#' \dontrun{fars_map_state(1, 2013)}
 #'
 #' @import dplyr
 #' @import maps
+#' @import graphic
 #' @export
 fars_map_state <- function(state.num, year) {
   filename <- make_filename(year)

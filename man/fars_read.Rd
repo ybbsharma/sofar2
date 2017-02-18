@@ -12,11 +12,13 @@ fars_read(filename)
 \value{
 This function returns the dataframe table for the data of \code{filename} which is passed as the argument.
  If the file do not exist then the function prints a error  {"file \code{filename} does not exist} message.
-
-#@examples
-#fars_read("xyz.csv")
-#fars_read("data/xyz.csv")
 }
 \description{
-This function will create a dataframe table by reading the file data. The functions take file name or file path as input
+This function will create a dataframe table by reading the file data. The functions take file name
+or file path as input
+}
+\examples{
+\dontrun{fars_read("accident_2015.csv.bz2")}
+
+
 }

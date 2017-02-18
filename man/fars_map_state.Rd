@@ -18,7 +18,7 @@ number". If not accident records found for the state then a message is returned 
 value NULL
 }
 \description{
-\code{fars_map_state} returns a FARS report for the state number and year passed as an argument
+This function returns a FARS report for the state number and year passed as an argument
 }
 \note{
 The function replace the Longitude data with NA where the Logitude value is > 900
