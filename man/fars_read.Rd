@@ -2,8 +2,7 @@
 % Please edit documentation in R/fars_functions.R
 \name{fars_read}
 \alias{fars_read}
-\title{Reads a file data and convert to a dateframe table.
-This function will create a dataframe table by reading the file data. The functions take file name or file path as input}
+\title{Reads a file data and convert to a dateframe table.}
 \usage{
 fars_read(filename)
 }
@@ -13,13 +12,11 @@ fars_read(filename)
 \value{
 This function returns the dataframe table for the data of \code{filename} which is passed as the argument.
  If the file do not exist then the function prints a error  {"file \code{filename} does not exist} message.
+
+#@examples
+#fars_read("xyz.csv")
+#fars_read("data/xyz.csv")
 }
 \description{
-Reads a file data and convert to a dateframe table.
 This function will create a dataframe table by reading the file data. The functions take file name or file path as input
-}
-\examples{
-fars_read("xyz.csv")
-fars_read("data/xyz.csv")
-
 }

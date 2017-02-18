@@ -12,10 +12,9 @@ make_filename(year)
 \value{
 the function prints the static filename appended with year name passed as argument. The functions throws
 an error when a non character or non numeric value is passed as an argument.
-}
-\examples{
-make_filename(1976)
-make_filename("1976")
-make_filename(76)
 
+#@examples
+#make_filename(1976)
+#make_filename("1976")
+#make_filename(76)
 }

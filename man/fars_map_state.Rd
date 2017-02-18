@@ -7,7 +7,9 @@
 fars_map_state(state.num, year)
 }
 \arguments{
-\item{state.num}{- numeric value}
+\item{state.num}{a numeric value}
+
+\item{year}{a character string or numeric}
 }
 \value{
 plots a map for data filtered for the inputed state number from the file where filename contains
@@ -21,8 +23,4 @@ value NULL
 \note{
 The function replace the Longitude data with NA where the Logitude value is > 900
 the function replace the Latitude data with NA where the Latitute value is > 90
-}
-\examples{
-fars_map_state(1, 2013)
-
 }

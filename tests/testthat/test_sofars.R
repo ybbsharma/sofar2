@@ -1,1 +1,2 @@
-expect_that("accident_2013.csv.bz2",matches(make_filename(2013)))
+
+expect_equal("accident_2013.csv.bz2", make_filename(2013))
