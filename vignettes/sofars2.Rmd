@@ -9,17 +9,52 @@ vignette: >
   \usepackage[utf8]{inputenc}
 ---
 
-```{r, echo=FALSE, message=FALSE}
-knitr::opts_chunk$set(collapse = T, comment = "#>")
+```{r}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, collapse = T, comment = "#>")
 library(sofars2)
+library(dplyr)
+library(maps)
+library(graphics)
+library(tidyr)
 ```
 
 ## SOFARS
 
-Provide functions to read, analyze and map FARS data
+This package consists of function which can be used to read, analyze and map FARS( Fatality Analysis Reporting System ) data. FARS is a nationwide census providing NHTSA, Congress and the American public yearly data regarding fatal injuries suffered in motor vehicle traffic crashes.
 
+The following functions are  included in the package:
+fars_read()
+make_filename()
+fars_read_years()
+fars_summarize_years()
+fars_map_state()
+The examples use data from FARS, years 2013-2015, that can be found in the package directory under \extdata folder.
 
+#Read FARS data
+This function read data from a file path provided as an argument and returns a tibble with loaded data
 
 ```{r}
-
+filename <- system.file("extdata", "accident_2013.csv.bz2", package = "sofars2")
+fars_read(filename)
 ```
+#Make a FARS file name
+This function creates a filename with the year number which is passed as an argument.
+
+```{r}
+make_filename(2013)
+```
+
+#Analyze accidents
+This function returns a pivot table with number of accidents per year and month. 
+
+```{r}
+#system.file("extdata", package = "sofars2")
+setwd("~/R-Coursera/R Packaging Assignments/sofars2/inst/extdata")
+fars_summarize_years(2013)
+```
+
+#Plot accident locations
+This function takes a state index and year as arguments and returns a map of the state with accident locations plotted.
+
+
+
