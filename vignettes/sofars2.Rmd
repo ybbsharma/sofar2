@@ -18,6 +18,7 @@ library(graphics)
 library(tidyr)
 ```
 
+
 ## SOFARS
 
 This package consists of function which can be used to read, analyze and map FARS( Fatality Analysis Reporting System ) data. FARS is a nationwide census providing NHTSA, Congress and the American public yearly data regarding fatal injuries suffered in motor vehicle traffic crashes.
@@ -49,7 +50,10 @@ This function returns a pivot table with number of accidents per year and month.
 
 ```{r}
 #system.file("extdata", package = "sofars2")
-setwd("~/R-Coursera/R Packaging Assignments/sofars2/inst/extdata")
+#system.file("extdata")
+#getwd()
+setwd("../inst/extdata")
+#getwd()
 fars_summarize_years(2013)
 ```
 
